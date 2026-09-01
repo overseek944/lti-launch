@@ -1,0 +1,25 @@
+# The reference LTI platform, deployed separately from the tool.
+#
+# It must be its own Worker: a Worker cannot fetch its own hostname, so the
+# tool's JWKS fetch against a platform hosted on the same origin would loop
+# back and fail. Separate services is also what the real world looks like.
+
+name = "lti-reference-platform"
+main = "src/platform-worker.ts"
+compatibility_date = "2026-08-01"
+compatibility_flags = ["nodejs_compat"]
+
+[observability]
+enabled = true
+
+[vars]
+TOOL_URL = "https://lti-launch.pretoni.com"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "lti-launch"
+database_id = "d037e657-7121-44af-b27e-1931daeaf722"
+
+[[routes]]
+pattern = "lti-platform.pretoni.com"
+custom_domain = true

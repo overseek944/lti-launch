@@ -1,0 +1,20 @@
+name = "lti-launch"
+main = "src/index.ts"
+compatibility_date = "2026-08-01"
+compatibility_flags = ["nodejs_compat"]
+
+[observability]
+enabled = true
+
+[vars]
+TOOL_URL = "https://lti-launch.pretoni.com"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "lti-launch"
+database_id = "d037e657-7121-44af-b27e-1931daeaf722"
+migrations_dir = "migrations"
+
+[[routes]]
+pattern = "lti-launch.pretoni.com"
+custom_domain = true
