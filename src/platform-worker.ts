@@ -13,6 +13,6 @@ import type { AppEnv, Bindings } from "./types.js";
 const app = new Hono<AppEnv>();
 app.get("/health", (c) => c.json({ status: "ok", service: "lti-reference-platform" }));
 app.route("/platform", platformRoutes);
-app.get("/", (c) => c.redirect("/platform/"));
+app.get("/", (c) => c.redirect("/platform"));
 
 export default { fetch: app.fetch } satisfies ExportedHandler<Bindings>;
